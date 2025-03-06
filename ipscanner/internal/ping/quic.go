@@ -15,7 +15,7 @@ import (
 
 type QuicPingResult struct {
 	AddrPort    netip.AddrPort
-	QUICVersion quic.VersionNumber
+	QUICVersion quic.Version
 	TLSVersion  uint16
 	RTT         time.Duration
 	Err         error
@@ -34,7 +34,7 @@ func (h *QuicPingResult) String() string {
 		return fmt.Sprintf("%s", h.Err)
 	}
 
-	return fmt.Sprintf("%s: quic=%s, tls=%s, time=%d ms", h.AddrPort, quic.VersionNumber(h.QUICVersion), statute.TlsVersionToString(h.TLSVersion), h.RTT)
+	return fmt.Sprintf("%s: quic=%s, tls=%s, time=%d ms", h.AddrPort, quic.Version(h.QUICVersion), statute.TlsVersionToString(h.TLSVersion), h.RTT)
 }
 
 type QuicPing struct {
